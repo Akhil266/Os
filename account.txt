@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="mystyles.css">
+</head>
+
+<body>
+    <div class="nav-container">
+        <div>
+            <a href="index.html">
+                Home
+            </a>
+        </div>
+        <div>
+            <a href="transaction.html">
+                Transaction
+            </a>
+        </div>
+        <div>
+            <a href="accounts.html">
+                Accounts
+            </a>
+        </div>
+        <div>
+            <a href="about.html">
+                About
+            </a>
+        </div>
+    </div>
+    <div class="title">
+        Banking System
+        <div>
+            The Perfect Banking Platform
+        </div>
+    </div>
+    <div class="footer">
+        <p>Bank Loans | Car Loans | Education Loans | Gold Loans available | More than 100 Branches in 150 cities</p>
+    </div>
+</body>
+
+</html>
+
+
+
+trans
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction</title>
+    <link rel="stylesheet" href="mystyles.css">
+    <script src="transScript.js"></script>
+</head>
+<body>
+    <div class="nav-container">
+        <div>
+            <a href="index.html">
+                Home
+            </a>
+        </div>
+        <div>
+            <a href="transaction.html">
+                Transaction
+            </a>
+        </div>
+        <div>
+            <a href="accounts.html">
+                Accounts
+            </a>
+        </div>
+        <div>
+            <a href="about.html">
+                About
+            </a>
+        </div>
+    </div>
+    <h1 id="trans-title">
+        Transaction
+    </h1>
+    <div class="transac">
+        <div>
+            <label>Receipient</label>
+            <div><input type="text" id="receipient"></div>
+        </div>
+        <div>
+            <label>Amount</label>
+            <div><input type="number" id="amount"></div>
+        </div>
+        <div>
+            <label>Type</label>
+            <div><input type="radio" name="trans-type" value="Income">Income <input type="radio" name="trans-type" value="Expense"> Expense</div>
+        </div>
+        <input type="button" value="submit" id="sbtn">
+    </div>
+    <br>
+    <table id="trans-table">
+        <tr>
+            <th>Sl.no</th>
+            <th>Receipient</th>
+            <th>Amount</th>
+            <th>Type</th>
+        </tr>
+    </table>
+</body>
+</html>
+
+
+trans jjs
+
+
+let current = 0;
+
+document.addEventListener("DOMContentLoaded", function () {
+    const submitBtn = document.getElementById("sbtn");
+
+    submitBtn.addEventListener("click", function () {
+        const nameInput = document.getElementById("receipient");
+        const amtInput = document.getElementById("amount");
+        const rad = document.getElementsByName("trans-type");
+
+        let rad_value = null;
+        for (let index = 0; index < rad.length; index++) {
+            if (rad[index].checked) {
+                rad_value = rad[index].value;
+            }
+        }
+
+        if (nameInput.value.trim() !== "" && parseFloat(amtInput.value) > 0 && rad_value !== null) {
+            current++;
+            let slno = current;
+            let table = document.getElementById("trans-table");
+            const newRow = table.insertRow();
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            const cell3 = newRow.insertCell(2);
+            const cell4 = newRow.insertCell(3);
+
+            cell1.innerHTML = slno;
+            cell2.innerHTML = nameInput.value.trim();
+            cell3.innerHTML = amtInput.value.trim();
+            cell4.innerHTML = rad_value;
+
+            // Reset input values
+            nameInput.value = "";
+            amtInput.value = "";
+            rad.forEach((radio) => (radio.checked = false));
+        } else {
+            alert("Enter all values to continue");
+        }
+    });
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <link rel="stylesheet" href="mystyles.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="nav-container">
+        <div>
+            <a href="index.html">
+                Home
+            </a>
+        </div>
+        <div>
+            <a href="transaction.html">
+                Transaction
+            </a>
+        </div>
+        <div>
+            <a href="accounts.html">
+                Accounts
+            </a>
+        </div>
+        <div>
+            <a href="about.html">
+                About
+            </a>
+        </div>
+    </div>
+    <div class="acc-body">
+        <div class="left">
+            <img src="image.png" alt="" width="70%">
+        </div>
+        <div class="right">
+            <div class="right-content">
+                <h1>Register</h1>
+            <div>
+                <form class="reg-form">
+                    <div>
+                        <label>
+                            Name <div>
+                                <input type="text" placeholder="Enter your name" id="name">
+                            </div>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Password <div>
+                                <input type="password" placeholder="Enter password" id="pwd">
+                            </div>
+                        </label>
+                    </div>
+                    <div><label>
+                        Confirm Password <div>
+                            <input type="password" placeholder="Re-enter password" id="conf-pwd">
+                        </div>
+                    </label></div>
+                    <input type="button" value="Register" id="btn-reg">
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.getElementById("btn-reg");
+
+    btn.addEventListener("click", function () {
+        const name = document.getElementById("name").value.trim();
+        const pwd = document.getElementById("pwd").value.trim();
+        const conf = document.getElementById("conf-pwd").value.trim();
+        if(name != ""){
+            if(pwd != "" || conf != ""){
+                if(pwd == conf){
+                    alert(`${name} registerd successfully`);
+                }else{
+                    alert("Passwords doesn't match");
+                }
+            }else{
+                alert("Enter password to continue");
+            }
+        }else {
+            alert("Enter name to continue");
+        }
+    });
+});
